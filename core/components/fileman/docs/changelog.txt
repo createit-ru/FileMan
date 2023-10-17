@@ -1,0 +1,7 @@
+Changelog for FileMan.
+
+3.0.0-beta
+==============
+- First version of the FileMan component
+- Requires MODX 3.
+- Requires PHP 7.2+.

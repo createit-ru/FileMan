@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="FileMan\Model" baseClass="xPDO\Om\xPDOObject" platform="mysql" defaultEngine="InnoDB" version="3.0">
+    <object class="File" table="fileman_files" extends="xPDO\Om\xPDOSimpleObject">
+        <field key="fid" dbtype="varchar" precision="40" phptype="string" null="false" default=""/>
+		<field key="name" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+		<field key="internal_name" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+        <field key="extension" dbtype="varchar" precision="50" phptype="string" null="false" default=""/>
+		<field key="path" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="title" dbtype="varchar" precision="1023" phptype="string" null="false" default=""/>
+        <field key="description" dbtype="text" phptype="string" null="false" default="" />
+        <field key="group" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+		<field key="size" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0"/>
+		<field key="hash" dbtype="varchar" precision="50" phptype="string" null="false" default=""/>
+
+		<field key="private" dbtype="tinyint" precision="1" phptype="boolean" attributes="unsigned" null="false" default="0"/>
+		<field key="download" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0"/>
+
+		<field key="resource_id" dbtype="int" precision="10" phptype="integer" null="false" default="0"/>
+		<field key="user_id" dbtype="int" precision="10" phptype="integer" null="false" default="0"/>
+		<field key="sort_order" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0"/>
+
+		<index alias="fid" name="fid" primary="false" unique="false" type="BTREE">
+			<column key="fid" length="" collation="A" null="false"/>
+		</index>
+		<index alias="name" name="name" primary="false" unique="false" type="BTREE">
+			<column key="name" length="" collation="A" null="false"/>
+		</index>
+		<index alias="resource_id" name="resource_id" primary="false" unique="false" type="BTREE">
+			<column key="resource_id" length="" collation="A" null="false"/>
+		</index>
+		<index alias="user_id" name="user_id" primary="false" unique="false" type="BTREE">
+			<column key="user_id" length="" collation="A" null="false"/>
+		</index>
+
+		<aggregate alias="Resource" class="MODX\Revolution\modResource" local="resource_id" foreign="id" cardinality="one" owner="foreign"/>
+    </object>
+</model>
