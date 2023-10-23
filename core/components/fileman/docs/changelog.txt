@@ -1,5 +1,10 @@
 Changelog for FileMan.
 
+3.0.1-pl
+==============
+- Added en lexicon
+- Fixed auto title generation when uploading a file
+
 3.0.0-beta
 ==============
 - First version of the FileMan component
