@@ -1,5 +1,7 @@
 <?php
 
+$_lang['area_fileman_main'] = 'Основные';
+
 $_lang['setting_fileman_mediasource'] = 'Медиа источник';
 $_lang['setting_fileman_mediasource_desc'] = 'Медиа источник для сохранения файлов';
 
