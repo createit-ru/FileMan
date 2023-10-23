@@ -198,6 +198,7 @@ class Upload extends Processor
                 $fileObject = $this->modx->newObject(File::class, array(
                     'fid' => $fid,
                     'resource_id' => $resourceId,
+                    'title'=> $title,
                     'name' => $nameWithoutExtension . '.' . $extension,
                     'internal_name' => $internalName,
                     'extension' => $extension,
