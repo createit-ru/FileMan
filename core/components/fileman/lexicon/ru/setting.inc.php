@@ -15,8 +15,8 @@ $_lang['setting_fileman_calchash_desc'] = 'Вычислять SHA1 хэш фай
 $_lang['setting_fileman_private'] = 'Закрытый режим';
 $_lang['setting_fileman_private_desc'] = 'Сохранять файлы по умолчанию со случайным именем чтобы нельзя было получить доступ к файлу по названию. Подсчет скачиваний ведется только для закрытых файлов';
 
-$_lang['setting_fileman_download'] = 'Считать скачивания';
-$_lang['setting_fileman_download_desc'] = 'Счет скачиваний увеличивает нагрузку на БД';
+$_lang['setting_fileman_count_downloads'] = 'Считать скачивания';
+$_lang['setting_fileman_count_downloads_desc'] = 'Подсчёт скачиваний увеличивает нагрузку на БД';
 
 $_lang['setting_fileman_auto_title'] = 'Авто-заголовок';
 $_lang['setting_fileman_auto_title_desc'] = 'Автоматически формирует Заголовок (имя файла без расширения) при загрузке файла';

@@ -22,7 +22,7 @@ $ids = $modx->getOption('ids', $scriptProperties, '');
 $resource = $modx->getOption('resource', $scriptProperties, 0);
 $showGroups = $modx->getOption('showGroups', $scriptProperties, 1);
 $makeUrl = $modx->getOption('makeUrl', $scriptProperties, true);
-$privateUrl = $modx->getOption('privateUrl', $scriptProperties, false);
+$private = $modx->getOption('private', $scriptProperties, false);
 $includeTimeStamp = $modx->getOption('includeTimeStamp', $scriptProperties, false);
 
 
@@ -71,7 +71,7 @@ foreach ($items as $item) {
     $itemArr = $item->toArray();
 
     if ($makeUrl) {
-        if ($itemArr['private'] || $privateUrl) {
+        if ($itemArr['private'] || $private) {
             $itemArr['url'] = $private_url . $itemArr['fid'];
         }
         else {

@@ -200,7 +200,7 @@ class FileMan
         }
 
         // Count downloads if allowed by config
-        if ($perform_count && $this->modx->getOption('fileman_download', null, true)) {
+        if ($perform_count && $this->modx->getOption('fileman_count_downloads', null, true)) {
 
             $count = $fileObject->get('download');
             $fileObject->set('download', $count + 1);

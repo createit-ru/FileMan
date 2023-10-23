@@ -2,9 +2,9 @@
 
 include_once 'setting.inc.php';
 
-$_lang['fileman'] = 'Прикрепленные файлы';
-$_lang['fileman_menu_desc'] = 'Файлы, прикрепленные к документам';
-$_lang['fileman_intro_msg'] = 'Вы можете выделять сразу несколько файлов при помощи Shift или Ctrl.';
+$_lang['fileman'] = 'FileMan';
+$_lang['fileman_menu_desc'] = 'Управление файлами, прикрепленными к документам';
+$_lang['fileman_intro_msg'] = 'Вы можете выделить сразу несколько файлов при помощи Shift или Ctrl.';
 $_lang['fileman_files'] = 'Файлы';
 
 $_lang['fileman_open'] = 'Открыть доступ';
@@ -40,10 +40,10 @@ $_lang['fileman_file_tab_general'] = 'Файл';
 $_lang['fileman_file_tab_settings'] = 'Настройки';
 
 $_lang['fileman_file_err_name'] = 'Вы должны указать название файла.';
-$_lang['fileman_file_err_ae'] = 'файл с таким именем уже существует.';
-$_lang['fileman_file_err_nf'] = 'файл не найден.';
-$_lang['fileman_file_err_ns'] = 'файл не указан.';
-$_lang['fileman_file_err_nr'] = 'файл не переименован.';
+$_lang['fileman_file_err_ae'] = 'Файл с таким именем уже существует.';
+$_lang['fileman_file_err_nf'] = 'Файл не найден.';
+$_lang['fileman_file_err_ns'] = 'Файл не указан.';
+$_lang['fileman_file_err_nr'] = 'Файл не переименован.';
 $_lang['fileman_file_err_remove'] = 'Ошибка при удалении файла.';
 $_lang['fileman_file_err_save'] = 'Ошибка при сохранении файла.';
 
