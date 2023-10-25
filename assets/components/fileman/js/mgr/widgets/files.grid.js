@@ -236,6 +236,48 @@ Ext.extend(FileMan.grid.Files, MODx.grid.Grid, {
         return true;
     },
 
+    // Sort by handler
+    sortByHandler: function (act, btn, e) {
+        let field = '';
+        switch (act.name) {
+            case 'sortby_title':
+                field = 'title';
+                break;
+            case 'sortby_name':
+                field = 'name';
+                break;
+            case 'sortby_group':
+                field = 'group';
+                break;
+            default:
+                return false;
+        }
+        var ids = this._getSelectedIds();
+
+        MODx.Ajax.request({
+            url: this.config.url,
+            params: {
+                action: 'File\\SortBy',
+                field: field,
+                resource: FileMan.config.resource_id,
+                ids: Ext.util.JSON.encode(ids)
+            },
+            listeners: {
+                success: {
+                    fn: function (r) {
+                        this.refresh();
+                    }, scope: this
+                },
+                failure: {
+                    fn: function (r) {
+                    }, scope: this
+                }
+            }
+        });
+
+        return true;
+    },
+
     // Remove file
     removeFile: function (act, btn, e) {
         var ids = this._getSelectedIds();
@@ -370,7 +412,7 @@ Ext.extend(FileMan.grid.Files, MODx.grid.Grid, {
     getTopBar: function (config) {
         var fields = [];
 
-        if (FileMan.config.resource_id)
+        if (FileMan.config.resource_id) {
             fields.push({
                 xtype: 'button',
                 cls: 'primary-button',
@@ -385,76 +427,113 @@ Ext.extend(FileMan.grid.Files, MODx.grid.Grid, {
                 scope: this,
                 handler: this.showUploadByUrlWindow
             });
+        }
 
-        fields.push({
-            xtype: 'splitbutton',
-            text: _('remove'),
-            menu: [
-                {
-                    name: 'open',
-                    text: _('fileman_open'),
-                    handler: this.accessFile,
-                    scope: this
-                },
-                {
-                    name: 'close',
-                    text: _('fileman_private'),
-                    handler: this.accessFile,
-                    scope: this
-                },
+        let bulk_actions = [
+            {
+                name: 'open',
+                text: _('fileman_open'),
+                handler: this.accessFile,
+                scope: this
+            },
+            {
+                name: 'close',
+                text: _('fileman_private'),
+                handler: this.accessFile,
+                scope: this
+            },
+            '-',
+            {
+                text: _('fileman_reset_downloads'),
+                handler: this.resetFileDownloads,
+                scope: this
+            }
+        ];
+
+        // sort actions
+        if (FileMan.config.resource_id) {
+            bulk_actions.push(
                 '-',
                 {
-                    text: _('fileman_reset_downloads'),
-                    handler: this.resetFileDownloads,
+                    name: 'sortby_title',
+                    text: _('fileman_sortby_title'),
+                    handler: this.sortByHandler,
                     scope: this
                 },
                 {
-                    text: _('remove'),
-                    handler: this.removeFile,
+                    name: 'sortby_name',
+                    text: _('fileman_sortby_name'),
+                    handler: this.sortByHandler,
+                    scope: this
+                },
+                {
+                    name: 'sortby_group',
+                    text: _('fileman_sortby_group'),
+                    handler: this.sortByHandler,
                     scope: this
                 }
-            ],
-            text: _('bulk_actions')
-        }, '->', {
-            xtype: 'textfield',
-            name: 'user',
-            width: 200,
-            id: config.id + '-search-user-field',
-            emptyText: _('user'),
-            listeners: {
-                render: {
-                    fn: function (tf) {
-                        tf.getEl().addKeyListener(Ext.EventObject.ENTER,
-                            function () {
-                                this._doSearch(tf);
-                            }, this);
-                    }, scope: this
+            );
+        }
+
+        // remove action
+        bulk_actions.push(
+            '-',
+            {
+                text: _('remove'),
+                handler: this.removeFile,
+                scope: this
+            }
+        );
+
+        fields.push(
+            {
+                text: _('bulk_actions'),
+                menu: bulk_actions
+            },
+            '->',
+            {
+                xtype: 'textfield',
+                name: 'user',
+                width: 160,
+                id: config.id + '-search-user-field',
+                emptyText: _('user'),
+                listeners: {
+                    render: {
+                        fn: function (tf) {
+                            tf.getEl().addKeyListener(Ext.EventObject.ENTER,
+                                function () {
+                                    this._doSearch(tf);
+                                }, this);
+                        }, scope: this
+                    }
+                }
+            },
+            {
+                xtype: 'textfield',
+                name: 'query',
+                width: 160,
+                id: config.id + '-search-field',
+                emptyText: _('search'),
+                listeners: {
+                    render: {
+                        fn: function (tf) {
+                            tf.getEl().addKeyListener(Ext.EventObject.ENTER,
+                                function () {
+                                    this._doSearch(tf);
+                                }, this);
+                        }, scope: this
+                    }
+                }
+            },
+            {
+                xtype: 'button',
+                id: config.id + '-search-clear',
+                text: '<i class="icon icon-times"></i>',
+                listeners: {
+                    click: { fn: this._clearSearch, scope: this }
                 }
             }
-        }, {
-            xtype: 'textfield',
-            name: 'query',
-            width: 200,
-            id: config.id + '-search-field',
-            emptyText: _('search'),
-            listeners: {
-                render: {
-                    fn: function (tf) {
-                        tf.getEl().addKeyListener(Ext.EventObject.ENTER,
-                            function () {
-                                this._doSearch(tf);
-                            }, this);
-                    }, scope: this
-                }
-            }
-        }, {
-            xtype: 'button',
-            id: config.id + '-search-clear',
-            text: '<i class="icon icon-times"></i>',
-            listeners: {
-                click: { fn: this._clearSearch, scope: this }
-            }
-        });
+        );
 
         return fields;
     },

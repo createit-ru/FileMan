@@ -11,8 +11,12 @@ $_lang['fileman_open'] = 'Открыть доступ';
 $_lang['fileman_private'] = 'Закрыть доступ';
 $_lang['fileman_update'] = 'Редактировать';
 $_lang['fileman_reset_downloads'] = 'Сбросить счетчик загрузок';
+$_lang['fileman_sortby_title'] = 'Сортировать по Заголовоку';
+$_lang['fileman_sortby_name'] = 'Сортировать по Названию файла';
+$_lang['fileman_sortby_group'] = 'Сортировать по Группе';
 
-$_lang['fileman_btn_upload'] = '<i class="icon icon-upload"></i> Загрузить с диска';
+
+$_lang['fileman_btn_upload'] = '<i class="icon icon-upload"></i> Загрузить';
 
 $_lang['fileman_window_upload_by_url_title'] = '<i class="icon icon-link"></i> Загрузить по ссылке';
 $_lang['fileman_btn_upload_by_url'] = '<i class="icon icon-link"></i> Загрузить по ссылке';

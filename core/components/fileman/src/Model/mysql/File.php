@@ -225,6 +225,22 @@ class File extends \FileMan\Model\File
                     ),
                 ),
             ),
+            'sort_order' => 
+            array (
+                'alias' => 'sort_order',
+                'primary' => false,
+                'unique' => false,
+                'type' => 'BTREE',
+                'columns' => 
+                array (
+                    'sort_order' => 
+                    array (
+                        'length' => '',
+                        'collation' => 'A',
+                        'null' => false,
+                    ),
+                ),
+            ),
         ),
         'aggregates' => 
         array (

@@ -10,9 +10,12 @@ $_lang['fileman_files'] = 'Files';
 $_lang['fileman_open'] = 'Open access';
 $_lang['fileman_private'] = 'Close access';
 $_lang['fileman_update'] = 'Edit';
-$_lang['fileman_reset_downloads'] = 'reset downloads';
+$_lang['fileman_reset_downloads'] = 'Reset downloads';
+$_lang['fileman_sortby_title'] = 'Sort by Title';
+$_lang['fileman_sortby_name'] = 'Sort by Name';
+$_lang['fileman_sortby_group'] = 'Sort by Group';
 
-$_lang['fileman_btn_upload'] = '<i class="icon icon-upload"></i> Upload from drive';
+$_lang['fileman_btn_upload'] = '<i class="icon icon-upload"></i> Upload';
 
 $_lang['fileman_window_upload_by_url_title'] = '<i class="icon icon-link"></i> Upload by link';
 $_lang['fileman_btn_upload_by_url'] = '<i class="icon icon-link"></i> Upload by link';
