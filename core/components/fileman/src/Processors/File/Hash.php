@@ -2,11 +2,10 @@
 
 namespace FileMan\Processors\File;
 
-use MODX\Revolution\Processors\Model\GetProcessor;
 use FileMan\Model\File;
-use MODX\Revolution\Processors\ModelProcessor;
+use MODX\Revolution\Processors\Model\UpdateProcessor;
 
-class Hash extends ModelProcessor
+class Hash extends UpdateProcessor
 {
     public $objectType = 'File';
     public $classKey = File::class;
@@ -17,22 +16,14 @@ class Hash extends ModelProcessor
     public $object;
 
     /**
-     * We doing special check of permission
-     * because of our objects is not an instances of modAccessibleObject
-     *
-     * @return mixed
+     * @return bool
      */
-    public function process()
+    public function beforeSet()
     {
-        if (!$this->checkPermissions()) {
-            return $this->failure($this->modx->lexicon('access_denied'));
-        }
-
         $hash = sha1($this->object->getFullPath());
 
-		$this->object->set('hash', $hash);
-		$this->object->save();
+        $this->setProperty('hash', $hash);
 
-		return $this->success('', array('hash' => $hash));
+        return parent::beforeSet();
     }
 }
