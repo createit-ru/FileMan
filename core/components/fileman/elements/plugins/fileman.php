@@ -1,10 +1,14 @@
 <?php
 
-use \FileMan\FileMan;
+use FileMan\FileMan;
 
-/** @var \MODX\Revolution\modX $modx */
+/** @var MODX\Revolution\modX $modx */
 switch ($modx->event->name) {
     case 'OnDocFormPrerender':
+        /** @var MODX\Revolution\modResource $resource */
+        if($resource === null) {
+            return;
+        }
 
         // Check access
         if (!$modx->hasPermission('fileman_doclist')) return;
