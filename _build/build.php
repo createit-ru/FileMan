@@ -602,6 +602,8 @@ class FileManPackage
                 , '', true, true);
             $vehicle = $this->builder->createVehicle($policy, $attributes);
             $this->builder->putVehicle($vehicle);
+
+            $this->modx->log(modX::LOG_LEVEL_INFO, print_r($policy->toArray(), 1));
         }
         $this->modx->log(modX::LOG_LEVEL_INFO, 'Packaged in ' . count($policies) . ' Access Policies');
     }

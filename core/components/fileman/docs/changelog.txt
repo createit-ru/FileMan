@@ -1,5 +1,10 @@
 Changelog for FileMan.
 
+3.1.0-pl
+==============
+- Added FileManPolicyTemplate policy template and permission checking in controllers 
+- Fixed bug with fileman_doclist permission in plugin
+
 3.0.2-pl
 ==============
 - Fixed a fatal error when creating a resource
