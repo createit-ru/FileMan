@@ -10,7 +10,7 @@ class Update extends UpdateProcessor
     public $objectType = 'File';
     public $classKey = File::class;
     public $languageTopics = ['fileman'];
-    public $permission = 'save';
+    public $permission = 'fileman_save';
 
     /** @var File $object */
     public $object;

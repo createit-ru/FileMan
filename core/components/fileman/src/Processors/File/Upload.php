@@ -13,7 +13,8 @@ class Upload extends Processor
     public $objectType = 'File';
     public $classKey = File::class;
     public $languageTopics = ['fileman'];
-    public $permission = 'file_upload';
+    public $permission = 'fileman_create';
+    public $permission2 = 'file_upload';
 
     /** @var modMediaSource $source */
     private $mediaSource;
@@ -26,9 +27,9 @@ class Upload extends Processor
     /** @var  boolean $calcHash */
     private $calcHash;
 
-    public function checkPermissions()
-    {
-        return $this->modx->hasPermission($this->permission);
+
+    public function checkPermissions() {
+        return $this->modx->hasPermission($this->permission) && $this->modx->hasPermission($this->permission2);
     }
 
     public function getLanguageTopics()

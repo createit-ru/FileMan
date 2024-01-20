@@ -10,7 +10,7 @@ class Access extends Processor
     public $objectType = 'File';
     public $classKey = File::class;
     public $languageTopics = ['fileman'];
-    public $permission = 'save';
+    public $permission = 'fileman_save';
 
 
     /**
@@ -18,10 +18,6 @@ class Access extends Processor
      */
     public function process()
     {
-        if (!$this->checkPermissions()) {
-            return $this->failure($this->modx->lexicon('access_denied'));
-        }
-
         $private = ($this->getProperty('private')) ? true : false;
 
         $ids = $this->modx->fromJSON($this->getProperty('ids'));
@@ -41,4 +37,9 @@ class Access extends Processor
 
         return $this->success();
     }
+
+    public function checkPermissions() {
+        return $this->modx->hasPermission($this->permission);
+    }
+
 }

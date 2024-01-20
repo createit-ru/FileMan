@@ -10,7 +10,7 @@ class Reset extends ModelProcessor
     public $objectType = 'File';
     public $classKey = File::class;
     public $languageTopics = ['fileman'];
-    public $permission = 'save';
+    public $permission = 'fileman_save';
 
     /**
 	 * @return array|string

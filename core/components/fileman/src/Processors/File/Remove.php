@@ -10,7 +10,7 @@ class Remove extends Processor
     public $objectType = 'File';
     public $classKey = File::class;
     public $languageTopics = ['fileman'];
-    public $permission = 'remove';
+    public $permission = 'fileman_remove';
 
 
     /**
@@ -37,5 +37,9 @@ class Remove extends Processor
         }
 
         return $this->success();
+    }
+
+    public function checkPermissions() {
+        return $this->modx->hasPermission($this->permission);
     }
 }

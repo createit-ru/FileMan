@@ -316,8 +316,6 @@ Ext.extend(FileMan.grid.Files, MODx.grid.Grid, {
         MODx.Ajax.request({
             url: MODx.config.connector_url,
             params: {
-                // TODO: 
-                //action: 'File\\Update',
                 action: 'Browser/File/Download',
                 file: filePath,
                 wctx: MODx.ctx || '',

@@ -11,7 +11,9 @@ switch ($modx->event->name) {
         }
 
         // Check access
-        // if (!$modx->hasPermission('fileman_doclist')) return;
+        if (!$modx->hasPermission('fileman_resource_tab')){
+            return;
+        }
 
         // Skip form building when resource template is not in permitted list
         $templates = trim($modx->getOption('fileman_templates'));

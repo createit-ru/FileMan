@@ -8,6 +8,7 @@ use MODX\Revolution\modExtraManagerController;
  */
 class FileManHomeManagerController extends modExtraManagerController
 {
+
     /** @var FileMan\FileMan $FileMan */
     public $FileMan;
 
@@ -36,7 +37,7 @@ class FileManHomeManagerController extends modExtraManagerController
      */
     public function checkPermissions()
     {
-        return true;
+        return $this->modx->hasPermission('fileman');
     }
 
 

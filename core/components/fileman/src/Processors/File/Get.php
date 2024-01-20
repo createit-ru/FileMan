@@ -10,7 +10,7 @@ class Get extends GetProcessor
     public $objectType = 'File';
     public $classKey = File::class;
     public $languageTopics = ['fileman:default'];
-    //public $permission = 'view';
+    public $permission = 'view';
 
 
     /**
