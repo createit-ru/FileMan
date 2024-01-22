@@ -1,5 +1,9 @@
 Changelog for FileMan.
 
+3.1.4-pl
+==============
+- Fixed installer bug with FileManTemplate policy
+
 3.1.0-pl
 ==============
 - Added FileManPolicyTemplate policy template and permission checking in controllers 
