@@ -1,5 +1,11 @@
 Changelog for FileMan.
 
+3.1.5-pl (Feb 12, 2024)
+==============
+- [#2] Fixed a bug with template checking in the plugin
+- [#3] Fixed the toPlaceholder property of the fmFiles snippet
+- [#4] Fixed a bug with HTML entities in the resource pagetitle
+
 3.1.4-pl
 ==============
 - Fixed installer bug with FileManTemplate policy

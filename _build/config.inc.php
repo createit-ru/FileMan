@@ -11,7 +11,7 @@ if (!defined('MODX_CORE_PATH')) {
 return [
     'name' => 'FileMan',
     'name_lower' => 'fileman',
-    'version' => '3.1.4',
+    'version' => '3.1.5',
     'release' => 'pl',
     // Install package to site right after build
     'install' => true,
