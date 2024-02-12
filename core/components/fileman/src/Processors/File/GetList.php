@@ -3,8 +3,10 @@
 namespace FileMan\Processors\File;
 
 use FileMan\Model\File;
+use MODX\Revolution\modResource;
 use MODX\Revolution\modUser;
 use MODX\Revolution\Processors\Model\GetListProcessor;
+use xPDO\Om\xPDOObject;
 use xPDO\Om\xPDOQuery;
 
 class GetList extends GetListProcessor
@@ -54,13 +56,13 @@ class GetList extends GetListProcessor
     public function prepareQueryBeforeCount(xPDOQuery $c)
     {
         $resourceId = (int) $this->getProperty('resource_id');
-		$user = trim($this->getProperty('user'));
-		$query = trim($this->getProperty('query'));
+        $user = trim($this->getProperty('user'));
+        $query = trim($this->getProperty('query'));
 
         $c->select($this->modx->getSelectColumns(File::class, 'File'));
 
-		if ($query){
-			$c->where(array(
+        if ($query){
+            $c->where(array(
                 'name:LIKE' => "%{$query}%",
                 'OR:title:LIKE' => "%{$query}%",
                 'OR:description:LIKE' => "%{$query}%",
@@ -68,22 +70,36 @@ class GetList extends GetListProcessor
             ));
         }
 
-		if ($user || ($resourceId == 0)) {
-			$c->select('User.username');
-			$c->leftJoin(modUser::class, 'User', 'User.id=File.user_id');
-		}
+        if ($user || ($resourceId == 0)) {
+            $c->select('User.username');
+            $c->leftJoin(modUser::class, 'User', 'User.id=File.user_id');
+        }
 
-		if ($user)
-			$c->where(array('User.username:LIKE' => "%$user%"));
+        if ($user)
+            $c->where(array('User.username:LIKE' => "%$user%"));
 
-		if ($resourceId > 0)
-			$c->where(array('resource_id' => $resourceId));
-		else {
-			$c->select('Resource.pagetitle');
-			$c->leftJoin('modResource', 'Resource', 'Resource.id=File.resource_id');
-		}
+        if ($resourceId > 0)
+            $c->where(array('resource_id' => $resourceId));
+        else {
+            $c->leftJoin('modResource', 'Resource', 'Resource.id=File.resource_id');
+            $c->select($this->modx->getSelectColumns(modResource::class, 'Resource', 'resource_', ['pagetitle']));
+        }
 
         return $c;
+    }
+
+    /**
+     * Prepare the row for iteration
+     *
+     * @param xPDOObject $object
+     *
+     * @return array
+     */
+    public function prepareRow(xPDOObject $object)
+    {
+        $array = $object->toArray();
+        $array['resource_pagetitle'] = strip_tags($array['resource_pagetitle']);
+        return $array;
     }
 
 }

@@ -20,7 +20,7 @@ class Combo extends GetListProcessor
     public $contextKeys = array();
 
     /** @var string $charset */
-	public $charset = 'UTF-8';
+    public $charset = 'UTF-8';
 
     public function beforeQuery()
     {
@@ -50,9 +50,9 @@ class Combo extends GetListProcessor
     }
 
     public function beforeIteration(array $list) {
-		$this->charset = $this->modx->getOption('modx_charset',null,'UTF-8');
-		return $list;
-	}
+        $this->charset = $this->modx->getOption('modx_charset',null,'UTF-8');
+        return $list;
+    }
 
     public function prepareQueryBeforeCount(xPDOQuery $c)
     {
@@ -83,8 +83,8 @@ class Combo extends GetListProcessor
     {
         $objectArray = $object->toArray();
 
-        $objectArray['pagetitle'] = htmlentities($objectArray['pagetitle'], ENT_COMPAT, $this->charset);
-        $objectArray['description'] = htmlentities($objectArray['description'], ENT_COMPAT, $this->charset);
+        $objectArray['pagetitle'] = html_entity_decode($objectArray['pagetitle'], ENT_COMPAT, $this->charset);
+        $objectArray['description'] = html_entity_decode($objectArray['description'], ENT_COMPAT, $this->charset);
 
         return array(
             'id' => $objectArray['id'],

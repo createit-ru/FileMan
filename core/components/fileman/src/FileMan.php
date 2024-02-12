@@ -61,7 +61,7 @@ class FileMan
      * */
     public function getFileFields()
     {
-        return array_merge(array_keys($this->modx->getFields(File::class)), array('pagetitle', 'username'));
+        return array_merge(array_keys($this->modx->getFields(File::class)), array('resource_pagetitle', 'username'));
     }
     
     /**

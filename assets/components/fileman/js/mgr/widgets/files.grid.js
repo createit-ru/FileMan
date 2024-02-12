@@ -395,8 +395,10 @@ Ext.extend(FileMan.grid.Files, MODx.grid.Grid, {
         if (!FileMan.config.resource_id)
             columns.push({
                 header: _('resource'),
-                dataIndex: 'pagetitle',
-                sortable: true
+                dataIndex: 'resource_pagetitle',
+                sortable: true,
+                xtype: 'templatecolumn',
+                tpl: '<a href="?a=resource/update&id={resource_id}" target="_blank">{resource_pagetitle}</a>'
             }, {
                 header: _('user'),
                 dataIndex: 'username',
