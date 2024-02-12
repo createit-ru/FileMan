@@ -34,8 +34,8 @@ return [
                 'value' => 'total',
             ),
             'toPlaceholder' => array(
-                'type' => 'combo-boolean',
-                'value' => false,
+                'type' => 'textfield',
+                'value' => '',
             ),
             'ids' => array(
                 'type' => 'textfield',
