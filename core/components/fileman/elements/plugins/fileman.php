@@ -21,7 +21,7 @@ switch ($modx->event->name) {
         if ($templates != '') {
             $templates = array_map('trim', explode(',', $templates));
             $template = $resource->get('template');
-            if (!in_array($template, $templatelist)) {
+            if (!in_array($template, $templates)) {
                 return;
             }
         }
