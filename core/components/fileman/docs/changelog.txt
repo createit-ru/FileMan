@@ -1,5 +1,10 @@
 Changelog for FileMan.
 
+3.2.0-pl (March 20, 2024)
+==============
+- The component can now work without pdoTools (see fileman_pdotools setting)
+- New parameters for fmFiles snippet: tplRow, tplGroup, tplWrapper, wrapIfEmpty (if the fileman_pdotools setting is disabled)
+
 3.1.5-pl (Feb 12, 2024)
 ==============
 - [#2] Fixed a bug with template checking in the plugin
