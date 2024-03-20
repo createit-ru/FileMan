@@ -9,6 +9,22 @@ return [
                 'type' => 'textfield',
                 'value' => 'tpl.FileMan.Files',
             ),
+            'tplRow' => array(
+                'type' => 'textfield',
+                'value' => 'tpl.FileMan.Row',
+            ),
+            'tplGroup' => array(
+                'type' => 'textfield',
+                'value' => 'tpl.FileMan.Group',
+            ),
+            'tplWrapper' => array(
+                'type' => 'textfield',
+                'value' => '',
+            ),
+            'wrapIfEmpty' => array(
+                'type' => 'combo-boolean',
+                'value' => false,
+            ),
             'sortBy' => array(
                 'type' => 'textfield',
                 'value' => 'sort_order',

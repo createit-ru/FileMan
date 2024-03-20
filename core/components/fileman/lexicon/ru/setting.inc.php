@@ -25,3 +25,6 @@ $_lang['setting_fileman_auto_title_desc'] = 'Автоматически форм
 
 $_lang['setting_fileman_grid_fields'] = 'Поля в списке файлов';
 $_lang['setting_fileman_grid_fields_desc'] = 'Поля, через запятую, которые будут выводится в списке файлов';
+
+$_lang['setting_fileman_pdotools'] = 'Использовать парсер pdoTools и шаблонизатор Fenom';
+$_lang['setting_fileman_pdotools_desc'] = 'Если pdoTools установлен, то сниппет fmFiles использует единый чанк, указанный в параметре tpl, иначе чанки, указанные в параметрах tplRow, tplGroup, tplWrapper.';

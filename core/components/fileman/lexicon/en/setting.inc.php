@@ -25,3 +25,6 @@ $_lang['setting_fileman_auto_title_desc'] = 'Automatically generates a title (fi
 
 $_lang['setting_fileman_grid_fields'] = 'Fields in the grid';
 $_lang['setting_fileman_grid_fields_desc'] = 'Fields, separated by commas, that will be displayed in the list of files.';
+
+$_lang['setting_fileman_pdotools'] = 'Use the pdoTools parser and the Fenom template engine';
+$_lang['setting_fileman_pdotools_desc'] = 'If pdoTools installed, the fmFiles snippet uses the single chunk specified in the tpl parameter, otherwise the chunks specified in the tplRow, tplGroup, tplWrapper parameters.';

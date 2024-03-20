@@ -12,14 +12,14 @@ if (!$transport->xpdo || !($transport instanceof xPDOTransport)) {
 
 $modx = $transport->xpdo;
 $packages = [
-    'Ace' => [
+    /*'Ace' => [
         'version' => '1.9.3-pl',
         'service_url' => 'modstore.pro',
     ],
     'pdoTools' => [
         'version' => '3.0.0-beta',
         'service_url' => 'modstore.pro',
-    ],
+    ],*/
 ];
 
 $downloadPackage = function ($src, $dst) {

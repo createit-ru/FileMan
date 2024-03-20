@@ -1,6 +1,9 @@
 <?php
 
-$_lang['fileman_prop_tpl'] = 'File list design chunk';
+$_lang['fileman_prop_tpl'] = 'Main chunk if the "fileman_pdotools" setting is enabled';
+$_lang['fileman_prop_tplRow'] = 'Chunk for one row (if the "fileman_pdotools" setting is disabled)';
+$_lang['fileman_prop_tplGroup'] = 'Chunk for group (if the "fileman_pdotools" setting is disabled)';
+$_lang['fileman_prop_tplWrapper'] = 'Chunk - wrapper, to wrap all results (if the "fileman_pdotools" setting is disabled)';
 $_lang['fileman_prop_sortBy'] = 'Sort field';
 $_lang['fileman_prop_sortDir'] = 'Sort direction';
 $_lang['fileman_prop_limit'] = 'Limit the number of results';

@@ -41,4 +41,9 @@ return [
         'value' => 'id,name,title,description,group,private,download',
 		'area' => 'fileman_main',
     ),
+	'pdotools' => array(
+		'xtype' => 'combo-boolean',
+        'value' => true,
+		'area' => 'fileman_main',
+	)
 ];

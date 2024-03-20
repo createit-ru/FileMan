@@ -13,7 +13,7 @@ class FileMan
     public $modx;
 
     /** @var pdoTools $pdoTools */
-    private $pdoTools;
+    private $pdoTools = null;
 
     /** @var array $config */
     public $config = [];
@@ -22,9 +22,7 @@ class FileMan
     {
         $this->modx = $modx;
 
-        if (!$this->pdoTools) {
-            $this->loadPdoTools();
-        }
+        $this->pdoTools = $this->getPdoTools();
 
         $corePath = MODX_CORE_PATH . 'components/fileman/';
         $assetsUrl = MODX_ASSETS_URL . 'components/fileman/';
@@ -63,7 +61,7 @@ class FileMan
     {
         return array_merge(array_keys($this->modx->getFields(File::class)), array('resource_pagetitle', 'username'));
     }
-    
+
     /**
      * This method returns the list of fields in the message grid.
      * @return array
@@ -78,17 +76,33 @@ class FileMan
     /**
      * Process and return the output from a Chunk by name.
      *
-     * @param string $name The name of the chunk.
+     * @param string $chunk The name of the chunk or @INLINE chunk.
      * @param array $properties An associative array of properties to process the Chunk with, treated as placeholders within the scope of the Element.
      * @param boolean $fastMode If false, all MODX tags in chunk will be processed.
      *
      * @return string The processed output of the Chunk.
      */
-    public function getChunk($name, array $properties = array(), $fastMode = false) {
-        if (!$this->pdoTools) {
-            $this->loadPdoTools();
+    public function getChunk($chunk, array $properties = array())
+    {
+        if ($this->pdoTools) {
+            return $this->pdoTools->getChunk($chunk, $properties, false);
         }
-        return $this->pdoTools->getChunk($name, $properties, $fastMode);
+
+        if (empty($chunk)) {
+            return print_r($properties, 1);
+        }
+
+        return $this->modx->getChunk($chunk, $properties);
+    }
+
+    /**
+     * Returns that pdoTools is available
+     *
+     * @return boolean
+     */
+    public function pdoToolsAvailable()
+    {
+        return $this->pdoTools ? true : false;
     }
 
     /**
@@ -96,19 +110,19 @@ class FileMan
      *
      * @return boolean
      */
-    public function loadPdoTools() {
-
+    public function getPdoTools()
+    {
         try {
-            $this->pdoTools = $this->modx->services->get('pdotools');
-        } catch (ContainerException | NotFoundException $e) {
-            $this->modx->log(modx::LOG_LEVEL_ERROR, "[FileMan] Fatal: can`t get pdoTools service (ContainerException | NotFoundException)");
-            return false;
+            $pdoTools = $this->modx->services->get('pdotools');
+        } catch (ContainerException | NotFoundException $ex) {
+            return null;
         }
-        return true;
+        return $pdoTools;
     }
 
-    public function download($fid) {
-        if(empty($fid)) {
+    public function download($fid)
+    {
+        if (empty($fid)) {
             return $this->modx->sendErrorPage();
         }
 
@@ -131,7 +145,7 @@ class FileMan
             $fileName = $fileObject->getFullPath();
 
             $fileSize = $meta['size'];
-            
+
             $mtime = filemtime($fileName);
 
             if (isset($_SERVER['HTTP_RANGE'])) {

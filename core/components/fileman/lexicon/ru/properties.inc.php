@@ -1,6 +1,9 @@
 <?php
 
-$_lang['fileman_prop_tpl'] = 'Чанк оформления списка файлов';
+$_lang['fileman_prop_tpl'] = 'Основной чанк, если настройка "fileman_pdotools" включена';
+$_lang['fileman_prop_tplRow'] = 'Чанк для оформления файла (если настройка "fileman_pdotools" выключена)';
+$_lang['fileman_prop_tplGroup'] = 'Чанк для оформления группы (если настройка "fileman_pdotools" выключена)';
+$_lang['fileman_prop_tplWrapper'] = 'Чанк-обертка результата (если настройка "fileman_pdotools" выключена)';
 $_lang['fileman_prop_sortBy'] = 'Поле сортировки';
 $_lang['fileman_prop_sortDir'] = 'Направление сортировки';
 $_lang['fileman_prop_limit'] = 'Ограничение количества в выборке';
