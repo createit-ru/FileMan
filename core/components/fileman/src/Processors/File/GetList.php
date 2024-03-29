@@ -98,7 +98,7 @@ class GetList extends GetListProcessor
     public function prepareRow(xPDOObject $object)
     {
         $array = $object->toArray();
-        $array['resource_pagetitle'] = strip_tags($array['resource_pagetitle']);
+        if(isset($array['resource_pagetitle'])) $array['resource_pagetitle'] = strip_tags($array['resource_pagetitle']);
         return $array;
     }
 
