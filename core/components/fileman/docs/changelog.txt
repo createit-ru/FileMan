@@ -1,5 +1,9 @@
 Changelog for FileMan.
 
+3.2.1-pl (November 11, 2024)
+==============
+- Minor code fixes (php warnings)
+
 3.2.0-pl (March 20, 2024)
 ==============
 - The component can now work without pdoTools (see fileman_pdotools setting)
