@@ -148,6 +148,8 @@ class FileMan
 
             $mtime = filemtime($fileName);
 
+            $range = null;
+
             if (isset($_SERVER['HTTP_RANGE'])) {
                 // Get range
                 $range = str_replace('bytes=', '', $_SERVER['HTTP_RANGE']);
