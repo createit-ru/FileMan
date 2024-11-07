@@ -24,7 +24,7 @@ class GetList extends GetListProcessor
      */
     public function initialize()
     {
-        if(!empty($this->getProperty('resource_id'))) {
+        if (!empty($this->getProperty('resource_id'))) {
             $this->defaultSortField = 'sort_order';
             $this->defaultSortDirection = 'ASC';
         }
@@ -61,7 +61,7 @@ class GetList extends GetListProcessor
 
         $c->select($this->modx->getSelectColumns(File::class, 'File'));
 
-        if ($query){
+        if ($query) {
             $c->where(array(
                 'name:LIKE' => "%{$query}%",
                 'OR:title:LIKE' => "%{$query}%",
@@ -98,8 +98,9 @@ class GetList extends GetListProcessor
     public function prepareRow(xPDOObject $object)
     {
         $array = $object->toArray();
-        if(isset($array['resource_pagetitle'])) $array['resource_pagetitle'] = strip_tags($array['resource_pagetitle']);
+        if (isset($array['resource_pagetitle'])) {
+            $array['resource_pagetitle'] = strip_tags($array['resource_pagetitle']);
+        }
         return $array;
     }
-
 }
