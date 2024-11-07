@@ -90,8 +90,9 @@ Ext.extend(FileMan.window.UpdateFile, MODx.Window, {
             {
                 xtype: 'xcheckbox',
                 id: config.id + '-private',
-                boxLabel: _('fileman_private'),
-                hideLabel: true,
+                fieldLabel: _('fileman_private'),
+                boxLabel: _('fileman_private_desc'),
+                hideLabel: false,
                 name: 'private'
             }
         ];

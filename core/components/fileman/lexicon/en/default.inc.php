@@ -9,6 +9,7 @@ $_lang['fileman_files'] = 'Files';
 
 $_lang['fileman_open'] = 'Open access';
 $_lang['fileman_private'] = 'Close access';
+$_lang['fileman_private_desc'] = 'The file cannot be downloaded via a direct link.';
 $_lang['fileman_update'] = 'Edit';
 $_lang['fileman_reset_downloads'] = 'Reset downloads';
 $_lang['fileman_sortby_title'] = 'Sort by Title';

@@ -9,6 +9,7 @@ $_lang['fileman_files'] = 'Файлы';
 
 $_lang['fileman_open'] = 'Открыть доступ';
 $_lang['fileman_private'] = 'Закрыть доступ';
+$_lang['fileman_private_desc'] = 'Файл нельзя будет скачать по прямой ссылке';
 $_lang['fileman_update'] = 'Редактировать';
 $_lang['fileman_reset_downloads'] = 'Сбросить счетчик загрузок';
 $_lang['fileman_sortby_title'] = 'Сортировать по Заголовоку';
