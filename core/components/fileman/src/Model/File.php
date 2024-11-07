@@ -129,24 +129,21 @@ class File extends \xPDO\Om\xPDOSimpleObject
         }
 
         $ms = $this->getMediaSource();
-
         $path = $this->get('path');
-
-        $extension = pathinfo($this->get('name'), PATHINFO_EXTENSION);
-        $extension = strtolower($extension);
+        $extension = strtolower(pathinfo($this->get('name'), PATHINFO_EXTENSION));
 
         // Generate name and check for existence
         $filename = $private ? $this->generateName() . "." . $extension : $this->get('name');
 
         // Получим список имен файлов в контейнере
         $files = [];
-        foreach($ms->getObjectsInContainer($path) as $fi) {
+        foreach ($ms->getObjectsInContainer($path) as $fi) {
             $files[] = mb_strtolower($fi['name']);
         };
 
         // генерируем новое имя файла, если вдруг такое уже есть в текущем контейнере
         // TODO: потенциально бесконечный цикл, нужно исправить
-        while(in_array($filename, $files)) {
+        while (in_array($filename, $files)) {
             if ($private)
                 $filename = $this->generateName() . "." . $extension;
             else
