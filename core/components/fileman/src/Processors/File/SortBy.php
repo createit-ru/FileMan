@@ -41,10 +41,10 @@ class SortBy extends ModelProcessor
 
         
         $sortColumn = $this->modx->getSelectColumns($this->classKey, $this->objectType, '', [$field]);
-        $criteria->sortby($sortColumn, 'ASC');
+        $criteria->sortby($this->modx->escape($sortColumn), 'ASC');
 
         $sortColumn2 = $this->modx->getSelectColumns($this->classKey, $this->objectType, '', ['id']);
-        $criteria->sortby($sortColumn2, 'ASC');
+        $criteria->sortby($this->modx->escape($sortColumn2), 'ASC');
 
         $files = $this->modx->getIterator($this->classKey, $criteria);
 

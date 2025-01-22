@@ -71,7 +71,7 @@ if (!empty($limit)) {
 }
 
 // sort
-$c->sortby($sortby, $sortdir);
+$c->sortby($modx->escape($sortby), $sortdir);
 
 $items = $modx->getIterator(File::class, $c);
 
