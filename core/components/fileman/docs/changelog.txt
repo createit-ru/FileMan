@@ -1,8 +1,13 @@
 Changelog for FileMan.
 
+3.2.3-pl (May 12, 2025)
+==============
+- Add a thumbnail column to the file list (just add "thumb" to "fileman_grid_fields" setting)
+- Improve code for php 7.4
+
 3.2.2-pl (January 22, 2025)
 ==============
-- Added field escaping when sorting
+- Add field escaping when sorting
 
 3.2.1-pl (November 11, 2024)
 ==============
