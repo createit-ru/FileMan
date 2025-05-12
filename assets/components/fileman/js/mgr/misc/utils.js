@@ -9,6 +9,17 @@ FileMan.utils.renderName = function (value, props, row) {
     return value + ( row.data['description'] ? '<br/><small>' + row.data['description'] + '</small>' : '');
 }
 
+FileMan.utils.renderThumb = function(val, cell, row) {
+    const source = this.source || MODx.config.default_media_source
+    const extension = row.data.extension
+    const imageExtensions = ["jpg", "png", "webp"];
+    if(imageExtensions.includes(extension)) {
+        const path = row.data.path
+        return '<img src="' + MODx.config.connectors_url + 'system/phpthumb.php?h=50&w=150&far=0&src=' + path + '&source=' + source + '" />'
+    }
+
+    return '';
+};
 
 FileMan.utils.getMenu = function (actions, grid, selected) {
     const menu = [];

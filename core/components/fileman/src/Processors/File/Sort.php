@@ -4,6 +4,7 @@ namespace FileMan\Processors\File;
 
 use FileMan\Model\File;
 use MODX\Revolution\Processors\ModelProcessor;
+use xPDO\xPDOException;
 
 class Sort extends ModelProcessor
 {
@@ -14,6 +15,7 @@ class Sort extends ModelProcessor
 
     /**
      * @return array|string
+     * @throws xPDOException
      */
     public function process()
     {

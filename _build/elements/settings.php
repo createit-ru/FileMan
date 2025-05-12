@@ -38,7 +38,7 @@ return [
     ),
     'grid_fields' => array(
         'xtype' => 'textfield',
-        'value' => 'id,name,title,description,group,private,download',
+        'value' => 'id,thumb,name,title,description,group,private,download',
 		'area' => 'fileman_main',
     ),
 	'pdotools' => array(

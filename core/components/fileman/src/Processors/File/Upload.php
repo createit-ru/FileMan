@@ -2,8 +2,8 @@
 
 namespace FileMan\Processors\File;
 
-use FileMan\FileMan;
 use FileMan\Model\File;
+use FileMan\Utils\Mime;
 use MODX\Revolution\modX;
 use MODX\Revolution\Processors\Processor;
 use MODX\Revolution\Sources\modMediaSource;
@@ -85,7 +85,6 @@ class Upload extends Processor
     }
 
 
-
     /**
      * @param $internalPath
      * @return bool|string
@@ -153,7 +152,7 @@ class Upload extends Processor
             $nameWithoutExtension = pathinfo($file['name'], PATHINFO_FILENAME);
             $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
             if (empty($extension)) {
-                $extension = FileMan::mime2ext($file['type']);
+                $extension = Mime::mime2ext($file['type']);
             }
 
             $internalName = $this->getInternalName($nameWithoutExtension, $extension);
@@ -233,7 +232,7 @@ class Upload extends Processor
 
     /**
      * Get the next sort order for the files of the specified resource
-     * 
+     *
      * @param int $resourceId Id ресурса
      * @return int
      */
@@ -241,7 +240,7 @@ class Upload extends Processor
     {
         $tableName = $this->modx->getTableName(File::class);
         $stmt = $this->modx->query("SELECT MAX(`sort_order`) FROM {$tableName} WHERE `resource_id` = {$resourceId}");
-        $sortOrder = (int) $stmt->fetch(PDO::FETCH_COLUMN);
+        $sortOrder = (int)$stmt->fetch(PDO::FETCH_COLUMN);
         $stmt->closeCursor();
 
         return $sortOrder + 1;

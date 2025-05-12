@@ -16,11 +16,8 @@ class Combo extends GetListProcessor
     public $defaultSortDirection = 'ASC';
     public $permission = 'search';
 
-    /** @var array $contextKeys */
-    public $contextKeys = array();
-
-    /** @var string $charset */
-    public $charset = 'UTF-8';
+    public array $contextKeys = array();
+    public string $charset = 'UTF-8';
 
     public function beforeQuery()
     {
@@ -35,7 +32,7 @@ class Combo extends GetListProcessor
      * Get a collection of Context keys that the User can access for all the Resources
      * @return array
      */
-    public function getContextKeys()
+    public function getContextKeys(): array
     {
         $contextKeys = array();
         $contexts = $this->modx->getCollection(modContext::class, array('key:!=' => 'mgr'));
@@ -49,12 +46,12 @@ class Combo extends GetListProcessor
         return $contextKeys;
     }
 
-    public function beforeIteration(array $list) {
+    public function beforeIteration(array $list): array {
         $this->charset = $this->modx->getOption('modx_charset',null,'UTF-8');
         return $list;
     }
 
-    public function prepareQueryBeforeCount(xPDOQuery $c)
+    public function prepareQueryBeforeCount(xPDOQuery $c): xPDOQuery
     {
         $id = $this->getProperty('id');
         $query = $this->getProperty('query');
@@ -79,17 +76,17 @@ class Combo extends GetListProcessor
     }
 
 
-    public function prepareRow(xPDOObject $object)
+    public function prepareRow(xPDOObject $object): array
     {
         $objectArray = $object->toArray();
 
         $objectArray['pagetitle'] = html_entity_decode($objectArray['pagetitle'], ENT_COMPAT, $this->charset);
         $objectArray['description'] = html_entity_decode($objectArray['description'], ENT_COMPAT, $this->charset);
 
-        return array(
+        return [
             'id' => $objectArray['id'],
             'pagetitle' => $objectArray['pagetitle'],
             'description' => $objectArray['description'],
-        );
+        ];
     }
 }

@@ -360,17 +360,19 @@ Ext.extend(FileMan.grid.Files, MODx.grid.Grid, {
 
     // Define columns
     getColumns: function (config) {
-        var columnsRaw = {
+        const columnsRaw = {
             id: { sortable: true, width: 40 },
+            thumb: { sortable: true, width: 100, renderer: FileMan.utils.renderThumb },
             name: { sortable: true, width: 120 },
             title: { sortable: true, width: 250, renderer: FileMan.utils.renderName },
             group: { sortable: true, width: 150 },
             extension: { sortable: true, width: 50 },
             download: { sortable: true, width: 50 },
-            private: { sortable: true, width: 50, renderer: FileMan.utils.renderBoolean }
+            private: { sortable: true, width: 50, renderer: FileMan.utils.renderBoolean },
+            path: { sortable: true, width: 100 },
         };
 
-        var columns = [this.sm];
+        let columns = [this.sm];
         if (FileMan.config.resource_id) {
             columns.push({
                 header: _('fileman_sort_order'),
@@ -381,8 +383,8 @@ Ext.extend(FileMan.grid.Files, MODx.grid.Grid, {
             });
         }
 
-        for (var i = 0; i < FileMan.config.files_grid_fields.length; i++) {
-            var column = FileMan.config.files_grid_fields[i];
+        for (let i = 0; i < FileMan.config.files_grid_fields.length; i++) {
+            const column = FileMan.config.files_grid_fields[i];
             if (columnsRaw[column]) {
                 Ext.applyIf(columnsRaw[column], {
                     header: _('fileman_' + column),
@@ -410,7 +412,7 @@ Ext.extend(FileMan.grid.Files, MODx.grid.Grid, {
 
     // Form top bar
     getTopBar: function (config) {
-        var fields = [];
+        let fields = [];
 
         if (FileMan.config.resource_id) {
             fields.push({

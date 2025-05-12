@@ -6,6 +6,8 @@ use FileMan\Model\File;
 use MODX\Revolution\modResource;
 use MODX\Revolution\modUser;
 use MODX\Revolution\Processors\Model\GetListProcessor;
+use MODX\Revolution\Sources\modMediaSource;
+use MODX\Revolution\Sources\modMediaSourceInterface;
 use xPDO\Om\xPDOObject;
 use xPDO\Om\xPDOQuery;
 
@@ -17,12 +19,11 @@ class GetList extends GetListProcessor
     public $defaultSortDirection = 'DESC';
     public $permission = 'fileman_list';
 
-
     /**
      * {@inheritDoc}
      * @return boolean
      */
-    public function initialize()
+    public function initialize(): bool
     {
         if (!empty($this->getProperty('resource_id'))) {
             $this->defaultSortField = 'sort_order';
@@ -47,15 +48,9 @@ class GetList extends GetListProcessor
         return true;
     }
 
-
-    /**
-     * @param xPDOQuery $c
-     *
-     * @return xPDOQuery
-     */
-    public function prepareQueryBeforeCount(xPDOQuery $c)
+    public function prepareQueryBeforeCount(xPDOQuery $c): xPDOQuery
     {
-        $resourceId = (int) $this->getProperty('resource_id');
+        $resourceId = (int)$this->getProperty('resource_id');
         $user = trim($this->getProperty('user'));
         $query = trim($this->getProperty('query'));
 
@@ -90,17 +85,15 @@ class GetList extends GetListProcessor
 
     /**
      * Prepare the row for iteration
-     *
-     * @param xPDOObject $object
-     *
-     * @return array
      */
-    public function prepareRow(xPDOObject $object)
+    public function prepareRow(xPDOObject $object): array
     {
+        /** @var File $object */
         $array = $object->toArray();
         if (isset($array['resource_pagetitle'])) {
             $array['resource_pagetitle'] = strip_tags($array['resource_pagetitle']);
         }
+        $array['path'] = $object->getPath();
         return $array;
     }
 }

@@ -16,13 +16,13 @@ use MODX\Revolution\Sources\modMediaSource;
  */
 class File extends \xPDO\Om\xPDOSimpleObject
 {
-    /** @var modMediaSource $source */
+    /** @var modMediaSource|bool $source */
     private $source = false;
 
     /**
      * Get the source, preparing it for usage.
      *
-     * @return modMediaSource source
+     * @return modMediaSource|bool source
      */
     private function getMediaSource()
     {
@@ -42,10 +42,8 @@ class File extends \xPDO\Om\xPDOSimpleObject
 
     /**
      * Get object URL
-     *
-     * @return string
      */
-    function getUrl()
+    function getUrl(): string
     {
         $ms = $this->getMediaSource();
         return $ms->getBaseUrl() . $this->getPath();
@@ -53,20 +51,16 @@ class File extends \xPDO\Om\xPDOSimpleObject
 
     /**
      * Get relative file path
-     *
-     * @return string
      */
-    function getPath()
+    function getPath(): string
     {
         return $this->get('path') . $this->get('internal_name');
     }
 
     /**
      * Get full file path in fs
-     *
-     * @return string
      */
-    function getFullPath()
+    function getFullPath(): string
     {
         $ms = $this->getMediaSource();
         return $ms->getBasePath() . $this->getPath();
@@ -75,7 +69,7 @@ class File extends \xPDO\Om\xPDOSimpleObject
     /**
      * Get file meta data
      *
-     * @return string
+     * @return array|bool
      */
     function getMetaData()
     {
@@ -96,12 +90,9 @@ class File extends \xPDO\Om\xPDOSimpleObject
     }
 
     /**
-     * Rename file
-     *
-     * @param string $newName
-     * @return boolean
+     * Rename the file
      */
-    function rename($newName)
+    function rename(string $newName): bool
     {
         $ms = $this->getMediaSource();
 
@@ -118,11 +109,8 @@ class File extends \xPDO\Om\xPDOSimpleObject
 
     /**
      * Set privacy mode
-     *
-     * @param boolean $private
-     * @return boolean
      */
-    function setPrivate($private)
+    function setPrivate(bool $private): bool
     {
         if ($this->get('private') == $private) {
             return true;
@@ -169,7 +157,7 @@ class File extends \xPDO\Om\xPDOSimpleObject
      * @param array $ancestors
      * @return bool
      */
-    function remove(array $ancestors = array())
+    function remove(array $ancestors = array()): bool
     {
         $filename = $this->getPath();
         if (!empty($filename)) {
@@ -181,12 +169,10 @@ class File extends \xPDO\Om\xPDOSimpleObject
         return parent::remove($ancestors);
     }
 
-    /* Generate Filename
-     *
-     * @param   integer  $length		Length of generated sequence
-     * @return  string
+    /**
+     * Generate Filename
      */
-    static function generateName($length = 32)
+    static function generateName(int $length = 32): string
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_';
         $charactersLength = strlen($characters);
@@ -199,12 +185,10 @@ class File extends \xPDO\Om\xPDOSimpleObject
         return $newName;
     }
 
-    /* Sanitize Filename
-     *
-     * @param   string  $str		Input file name
-     * @return  string
+    /**
+     * Sanitize Filename
      */
-    static function sanitizeName($str)
+    static function sanitizeName(string $str): string
     {
         $bad = array(
             '../', '<!--', '-->', '<', '>',

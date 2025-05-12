@@ -30,6 +30,7 @@ $_lang['fileman_url_close_window'] = 'Не закрывать окно посл�
 $_lang['fileman_id'] = 'ID';
 $_lang['fileman_sort_order'] = 'Порядок';
 $_lang['fileman_fid'] = 'ID файла';
+$_lang['fileman_thumb'] = 'Превью';
 $_lang['fileman_name'] = 'Название файла';
 $_lang['fileman_internal_name'] = 'Внутреннее название файла';
 $_lang['fileman_extension'] = 'Расширение файла';

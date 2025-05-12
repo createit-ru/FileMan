@@ -26,7 +26,6 @@ switch ($modx->event->name) {
             }
         }
 
-        /** @var FileMan $fileMan */
         $fileMan = new FileMan($modx);
         $modx->services->add('FileMan', $fileMan);
 
@@ -75,6 +74,7 @@ switch ($modx->event->name) {
             return;
         }
 
+        /** @var array $ids */
         foreach ($ids as $id) {
             $files = $modx->getIterator(\FileMan\Model\File::class, [
                 'resource_id' => $id

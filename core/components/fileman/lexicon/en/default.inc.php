@@ -29,6 +29,7 @@ $_lang['fileman_url_close_window'] = 'Don\'t close the window after loading';
 $_lang['fileman_id'] = 'Id';
 $_lang['fileman_sort_order'] = 'Order';
 $_lang['fileman_fid'] = 'File Id';
+$_lang['fileman_thumb'] = 'Thumbnail';
 $_lang['fileman_name'] = 'Name';
 $_lang['fileman_internal_name'] = 'Internal name';
 $_lang['fileman_extension'] = 'Extension';
