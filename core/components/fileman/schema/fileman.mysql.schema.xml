@@ -12,7 +12,9 @@
         <field key="size" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0"/>
         <field key="hash" dbtype="varchar" precision="50" phptype="string" null="false" default=""/>
 
+        <field key="published" dbtype="tinyint" precision="1" attributes="unsigned" phptype="boolean" null="false" default="1" />
         <field key="private" dbtype="tinyint" precision="1" phptype="boolean" attributes="unsigned" null="false" default="0"/>
+        <field key="published_at" dbtype="datetime" phptype="datetime" null="true" />
         <field key="download" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0"/>
 
         <field key="resource_id" dbtype="int" precision="10" phptype="integer" null="false" default="0"/>
@@ -24,6 +26,9 @@
         </index>
         <index alias="name" name="name" primary="false" unique="false" type="BTREE">
             <column key="name" length="" collation="A" null="false"/>
+        </index>
+        <index alias="published" name="published" primary="false" unique="false" type="BTREE">
+            <column key="published" length="" collation="A" null="false"/>
         </index>
         <index alias="resource_id" name="resource_id" primary="false" unique="false" type="BTREE">
             <column key="resource_id" length="" collation="A" null="false"/>

@@ -39,6 +39,9 @@ $_lang['fileman_description'] = 'Description';
 $_lang['fileman_group'] = 'Group';
 $_lang['fileman_hash'] = 'SHA1 hash';
 $_lang['fileman_size'] = 'Size';
+$_lang['fileman_published'] = 'Published';
+$_lang['fileman_published_desc'] = 'The file will be displayed on the website.';
+$_lang['fileman_published_at'] = 'Date';
 $_lang['fileman_download'] = 'Number of downloads';
 
 $_lang['fileman_file_tab_general'] = 'General';

@@ -19,6 +19,11 @@ class File extends \xPDO\Om\xPDOSimpleObject
     /** @var modMediaSource|bool $source */
     private $source = false;
 
+    public function setMediaSource(modMediaSource &$source)
+    {
+        $this->source = $source;
+    }
+
     /**
      * Get the source, preparing it for usage.
      *

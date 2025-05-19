@@ -49,7 +49,7 @@ Ext.extend(FileMan.window.UpdateFile, MODx.Window, {
     },
 
     getFields: function (config) {
-        var fieldsTabGeneral = [
+        let fieldsTabGeneral = [
             {
                 xtype: 'hidden',
                 name: 'id',
@@ -69,7 +69,7 @@ Ext.extend(FileMan.window.UpdateFile, MODx.Window, {
                 name: 'description',
                 id: config.id + '-description',
                 anchor: '99%',
-                height: 120
+                height: 80
             },
             {
                 xtype: 'textfield',
@@ -80,6 +80,49 @@ Ext.extend(FileMan.window.UpdateFile, MODx.Window, {
                 allowBlank: true
             },
             {
+                xtype: 'xdatetime',
+                fieldLabel: _('fileman_published_at'),
+                name: 'published_at',
+                id: config.id + '-published_at',
+                anchor: '50%',
+                allowBlank: true,
+                dateFormat: MODx.config.manager_date_format,
+                timeFormat: MODx.config.manager_time_format,
+                startDay: parseInt(MODx.config.manager_week_start),
+            },
+            {
+                layout: 'column',
+                border: false,
+                items: [{
+                    columnWidth: .5,
+                    border: false,
+                    layout: 'form',
+                    items: [{
+                        xtype: 'xcheckbox',
+                        id: config.id + '-published',
+                        fieldLabel: _('fileman_published'),
+                        boxLabel: _('fileman_published_desc'),
+                        hideLabel: false,
+                        name: 'published'
+                    }]
+                }, {
+                    columnWidth: .5,
+                    border: false,
+                    layout: 'form',
+                    items: [{
+                        xtype: 'xcheckbox',
+                        id: config.id + '-private',
+                        fieldLabel: _('fileman_private'),
+                        boxLabel: _('fileman_private_desc'),
+                        hideLabel: false,
+                        name: 'private'
+                    }]
+                }]
+            }
+        ];
+
+        let fieldsTabSettings = [
+            {
                 xtype: 'textfield',
                 fieldLabel: _('fileman_name'),
                 name: 'name',
@@ -87,17 +130,6 @@ Ext.extend(FileMan.window.UpdateFile, MODx.Window, {
                 anchor: '99%',
                 allowBlank: false
             },
-            {
-                xtype: 'xcheckbox',
-                id: config.id + '-private',
-                fieldLabel: _('fileman_private'),
-                boxLabel: _('fileman_private_desc'),
-                hideLabel: false,
-                name: 'private'
-            }
-        ];
-
-        var fieldsTabSettings = [
             {
                 xtype: 'statictextfield',
                 fieldLabel: _('fileman_path'),
@@ -112,13 +144,13 @@ Ext.extend(FileMan.window.UpdateFile, MODx.Window, {
                 id: config.id + '-internal_name',
                 anchor: '99%'
             },
-            {
-                xtype: 'statictextfield',
-                fieldLabel: _('fileman_extension'),
-                name: 'extension',
-                id: config.id + '-extension',
-                anchor: '99%'
-            },
+            // {
+            //     xtype: 'statictextfield',
+            //     fieldLabel: _('fileman_extension'),
+            //     name: 'extension',
+            //     id: config.id + '-extension',
+            //     anchor: '99%'
+            // },
             {
                 xtype: 'statictextfield',
                 fieldLabel: _('fileman_fid'),
@@ -151,9 +183,8 @@ Ext.extend(FileMan.window.UpdateFile, MODx.Window, {
 
         var result = [];
         if (FileMan.config.resource_id > 0) {
-            result.push({ xtype: 'hidden', name: 'resource_id', id: config.id + '-resource_id' });
-        }
-        else {
+            result.push({xtype: 'hidden', name: 'resource_id', id: config.id + '-resource_id'});
+        } else {
             fieldsTabSettings.unshift({
                 xtype: 'modx-combo',
                 id: config.id + '-resource_id',
@@ -204,7 +235,7 @@ Ext.extend(FileMan.window.UpdateFile, MODx.Window, {
 
         result.push({
             xtype: 'modx-tabs',
-            defaults: { border: false, autoHeight: true },
+            defaults: {border: false, autoHeight: true},
             deferredRender: false,
             border: true,
             hideMode: 'offsets',

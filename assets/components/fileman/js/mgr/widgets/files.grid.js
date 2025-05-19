@@ -368,6 +368,7 @@ Ext.extend(FileMan.grid.Files, MODx.grid.Grid, {
             group: { sortable: true, width: 150 },
             extension: { sortable: true, width: 50 },
             download: { sortable: true, width: 50 },
+            published: { sortable: true, width: 50, renderer: FileMan.utils.renderBoolean },
             private: { sortable: true, width: 50, renderer: FileMan.utils.renderBoolean },
             path: { sortable: true, width: 100 },
         };

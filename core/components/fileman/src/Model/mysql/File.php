@@ -27,7 +27,9 @@ class File extends \FileMan\Model\File
             'group' => '',
             'size' => 0,
             'hash' => '',
+            'published' => 1,
             'private' => 0,
+            'published_at' => NULL,
             'download' => 0,
             'resource_id' => 0,
             'user_id' => 0,
@@ -115,6 +117,15 @@ class File extends \FileMan\Model\File
                 'null' => false,
                 'default' => '',
             ),
+            'published' => 
+            array (
+                'dbtype' => 'tinyint',
+                'precision' => '1',
+                'attributes' => 'unsigned',
+                'phptype' => 'boolean',
+                'null' => false,
+                'default' => 1,
+            ),
             'private' => 
             array (
                 'dbtype' => 'tinyint',
@@ -123,6 +134,12 @@ class File extends \FileMan\Model\File
                 'attributes' => 'unsigned',
                 'null' => false,
                 'default' => 0,
+            ),
+            'published_at' => 
+            array (
+                'dbtype' => 'datetime',
+                'phptype' => 'datetime',
+                'null' => true,
             ),
             'download' => 
             array (
@@ -186,6 +203,22 @@ class File extends \FileMan\Model\File
                 'columns' => 
                 array (
                     'name' => 
+                    array (
+                        'length' => '',
+                        'collation' => 'A',
+                        'null' => false,
+                    ),
+                ),
+            ),
+            'published' => 
+            array (
+                'alias' => 'published',
+                'primary' => false,
+                'unique' => false,
+                'type' => 'BTREE',
+                'columns' => 
+                array (
+                    'published' => 
                     array (
                         'length' => '',
                         'collation' => 'A',

@@ -31,8 +31,8 @@ $_lang['fileman_id'] = 'ID';
 $_lang['fileman_sort_order'] = 'Порядок';
 $_lang['fileman_fid'] = 'ID файла';
 $_lang['fileman_thumb'] = 'Превью';
-$_lang['fileman_name'] = 'Название файла';
-$_lang['fileman_internal_name'] = 'Внутреннее название файла';
+$_lang['fileman_name'] = 'Имя файла';
+$_lang['fileman_internal_name'] = 'Внутреннее имя файла';
 $_lang['fileman_extension'] = 'Расширение файла';
 $_lang['fileman_path'] = 'Путь';
 $_lang['fileman_title'] = 'Заголовок';
@@ -40,12 +40,15 @@ $_lang['fileman_description'] = 'Описание';
 $_lang['fileman_group'] = 'Группа';
 $_lang['fileman_hash'] = 'Контрольная сумма SHA1';
 $_lang['fileman_size'] = 'Размер';
+$_lang['fileman_published'] = 'Опубликован';
+$_lang['fileman_published_desc'] = 'Файл будет отображаться в публичной части сайта';
+$_lang['fileman_published_at'] = 'Дата';
 $_lang['fileman_download'] = 'Скачано';
 
 $_lang['fileman_file_tab_general'] = 'Файл';
 $_lang['fileman_file_tab_settings'] = 'Настройки';
 
-$_lang['fileman_file_err_name'] = 'Вы должны указать название файла.';
+$_lang['fileman_file_err_name'] = 'Вы должны указать имя файла.';
 $_lang['fileman_file_err_ae'] = 'Файл с таким именем уже существует.';
 $_lang['fileman_file_err_nf'] = 'Файл не найден.';
 $_lang['fileman_file_err_ns'] = 'Файл не указан.';
