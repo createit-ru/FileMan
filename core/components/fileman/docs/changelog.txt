@@ -1,5 +1,10 @@
 Changelog for FileMan.
 
+3.3.0-pl (May 20, 2025)
+==============
+- Add fields "published", "published_at" to the File object
+- New parameter "showUnpublished" for fmFiles snippet
+
 3.2.3-pl (May 12, 2025)
 ==============
 - Add a thumbnail column to the file list (just add "thumb" to "fileman_grid_fields" setting)
