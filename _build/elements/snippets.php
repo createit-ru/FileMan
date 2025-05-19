@@ -61,6 +61,10 @@ return [
                 'type' => 'numberfield',
                 'value' => 0,
             ),
+            'showUnpublished' => array(
+                'type' => 'combo-boolean',
+                'value' => false,
+            ),
             'showGroups' => array(
                 'type' => 'combo-boolean',
                 'value' => true,

@@ -18,12 +18,10 @@ $tplGroup = $modx->getOption('tplGroup', $scriptProperties, 'tpl.FileMan.Group')
 $tplRow = $modx->getOption('tplRow', $scriptProperties, 'tpl.FileMan.Row');
 $wrapIfEmpty = $modx->getOption('wrapIfEmpty', $scriptProperties, false);
 
-$usePdoTools = $fileMan->pdoToolsAvailable()
-    ? $modx->getOption('fileman_pdotools', $scriptProperties, true)
-    : false;
+$usePdoTools = $fileMan->pdoToolsAvailable() && $modx->getOption('fileman_pdotools', $scriptProperties, true);
 
-$sortby = $modx->getOption('sortBy', $scriptProperties, 'sort_order');
-$sortdir = $modx->getOption('sortDir', $scriptProperties, 'ASC');
+$sortBy = $modx->getOption('sortBy', $scriptProperties, 'sort_order');
+$sortDir = $modx->getOption('sortDir', $scriptProperties, 'ASC');
 $limit = $modx->getOption('limit', $scriptProperties, 0);
 $offset = $modx->getOption('offset', $scriptProperties, 0);
 $totalVar = $modx->getOption('totalVar', $scriptProperties, 'total');
@@ -32,6 +30,7 @@ $toPlaceholder = $modx->getOption('toPlaceholder', $scriptProperties, false);
 
 $ids = $modx->getOption('ids', $scriptProperties, '');
 $resource = $modx->getOption('resource', $scriptProperties, 0);
+$showUnpublished = $modx->getOption('showUnpublished', $scriptProperties, false);
 $showGroups = $modx->getOption('showGroups', $scriptProperties, true);
 $makeUrl = $modx->getOption('makeUrl', $scriptProperties, true);
 $private = $modx->getOption('private', $scriptProperties, false);
@@ -50,6 +49,11 @@ $private_url .= 'download.php?fid=';
 // Build query
 $c = $modx->newQuery(File::class);
 
+if (!$showUnpublished) {
+    $c->where([
+        'published' => true
+    ]);
+}
 // resource
 $c->where([
     'resource_id' => ($resource > 0) ? $resource : $modx->resource->get('id')
@@ -71,7 +75,7 @@ if (!empty($limit)) {
 }
 
 // sort
-$c->sortby($modx->escape($sortby), $sortdir);
+$c->sortby($modx->escape($sortBy), $sortDir);
 
 $items = $modx->getIterator(File::class, $c);
 
@@ -83,7 +87,7 @@ $index = 0;
 
 /** @var File $item */
 foreach ($items as $item) {
-    $item->source = $mediaSource;
+    $item->setMediaSource($mediaSource);
     $itemArr = $item->toArray();
 
     if ($makeUrl) {

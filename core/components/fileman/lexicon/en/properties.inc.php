@@ -14,6 +14,7 @@ $_lang['fileman_prop_private'] = 'Forced to work in private mode';
 $_lang['fileman_prop_ids'] = 'List of specific id files for output';
 $_lang['fileman_prop_resource'] = 'Show files for this resource, by default - the current resource.';
 $_lang['fileman_prop_showGroups'] = 'Use grouping (if the group field is filled in)';
+$_lang['fileman_prop_showUnpublished'] = 'Show unpublished files';
 $_lang['fileman_prop_makeUrl'] = 'Generate a link to download a file';
 $_lang['fileman_prop_includeTimeStamp'] = 'Include file modification date';
 
