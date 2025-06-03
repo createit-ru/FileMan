@@ -254,8 +254,8 @@ class Upload extends Processor
      */
     private function preparePath($path)
     {
-        $search = array('{year}', '{month}', '{day}', '{user}', '{resource}');
-        $replace = array(date('Y'), date('m'), date('d'), $this->modx->user->get('id'), $this->getProperty('resource_id'));
+        $search = array('{year}', '{month}', '{day}', '{user}', '{resource}', '{resourceIdPath}');
+        $replace = array(date('Y'), date('m'), date('d'), $this->modx->user->get('id'), $this->getProperty('resource_id'),implode('/', str_split(strval($this->getProperty('resource_id')))) . '/');
 
         return str_replace($search, $replace, $path);
     }
