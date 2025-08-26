@@ -1,5 +1,9 @@
 Changelog for FileMan.
 
+3.3.1-pl (August 26, 2025)
+==============
+- Fix a bug with downloading files in the admin panel [#10]
+
 3.3.0-pl (May 20, 2025)
 ==============
 - Add fields "published", "published_at" to the File object
