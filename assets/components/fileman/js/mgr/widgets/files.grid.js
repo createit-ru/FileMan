@@ -309,9 +309,8 @@ Ext.extend(FileMan.grid.Files, MODx.grid.Grid, {
 
     // Download file
     downloadFile: function (act, btn, e) {
-        var item = this._getSelected();
-
-        var filePath = item['path'] + item['internal_name'];
+        const item = this._getSelected();
+        const filePath = item['path'];
 
         MODx.Ajax.request({
             url: MODx.config.connector_url,
