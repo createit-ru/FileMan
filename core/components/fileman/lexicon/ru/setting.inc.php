@@ -6,7 +6,7 @@ $_lang['setting_fileman_mediasource'] = 'Медиа источник';
 $_lang['setting_fileman_mediasource_desc'] = 'Медиа источник для сохранения файлов';
 
 $_lang['setting_fileman_path'] = 'Путь к файлам';
-$_lang['setting_fileman_path_desc'] = 'Путь внутри файлового источника. Должно завершаться на "/". Поддерживает переменные {year},{month},{day},{user},{resource}. Напр. files/{resource}/{year}/';
+$_lang['setting_fileman_path_desc'] = 'Путь внутри файлового источника. Должно завершаться на "/". Поддерживает переменные {year},{month},{day},{user},{resource},{resourceIdPath}. Напр. files/{resource}/{year}/';
 
 $_lang['setting_fileman_templates'] = 'Шаблоны';
 $_lang['setting_fileman_templates_desc'] = 'Список шаблонов для работы модуля. Перечисление через запятую. По умолчанию работает для всех ресурсов';

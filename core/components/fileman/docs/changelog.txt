@@ -1,5 +1,9 @@
 Changelog for FileMan.
 
+3.3.2-pl (February 02, 2026)
+==============
+- New parameter "resourceIdPath" for "fileman_path" setting.
+
 3.3.1-pl (August 26, 2025)
 ==============
 - Fix a bug with downloading files in the admin panel [#10]

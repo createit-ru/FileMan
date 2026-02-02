@@ -6,7 +6,7 @@ $_lang['setting_fileman_mediasource'] = 'Media source';
 $_lang['setting_fileman_mediasource_desc'] = 'Media source for files.';
 
 $_lang['setting_fileman_path'] = 'Path to files';
-$_lang['setting_fileman_path_desc'] = 'Path inside the file source. Must end with "/". Supports {year},{month},{day},{user},{resource} variables. Eg. files/{resource}/{year}/';
+$_lang['setting_fileman_path_desc'] = 'Path inside the file source. Must end with "/". Supports {year},{month},{day},{user},{resource},{resourceIdPath} variables. Eg. files/{resource}/{year}/';
 
 $_lang['setting_fileman_templates'] = 'Templates';
 $_lang['setting_fileman_templates_desc'] = 'List of templates for which the component works. Listing separated by commas. Works by default for all templates.';
